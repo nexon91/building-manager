@@ -38,6 +38,10 @@ public class AdminController {
 		return listByPage(model,1,"id","asc");
 	}
 	
+	/**
+	 *	Paging and sorting Employees	 
+	 */
+	
 	@GetMapping("employees/{pageNumber}")
 	public String listByPage(Model model,@PathVariable("pageNumber") int currentPage,
 							@Param("sortField") String sortField ,@Param("sortDirection") String sortDirection) {
@@ -78,16 +82,7 @@ public class AdminController {
 		return "admin/employee/edit-employee";
 	}
 	
-	/* NOT DONE YET
-	@PostMapping(value="/employee/edit-employee/save")
-	public String saveEmployee(@Valid Employee employee) {
-		//System.out.println(employee);
-		Employee emp = empService.findEmployeeById(employee.getId());
-		empService.addEmployee(emp);
-		return "redirect:/admin/employee/" + emp.getId();
-		
-	}
-	*/
+	
 	
 	@GetMapping("/employee/new")
 	public String addEmployee(Model model) {
