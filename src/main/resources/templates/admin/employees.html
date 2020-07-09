@@ -1,0 +1,70 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/admin/header::admin-header">
+</head>
+<body>
+<nav th:replace="fragments/admin/navbar::admin-navbar"></nav>
+<main>
+	
+	<div class="container">
+		<table class="table table-striped table-bordered">
+<!-- 			<th:block th:each="employees : ${employees}"> -->
+			<thead >
+				<tr >
+					<th>
+					<a th:href="@{'/admin/employees/' + ${currentPage} + '?sortField=id&sortDirection=' + ${sortDirection}}" th:text="#{employees.id}"></a>
+					</th>
+					<th th:text="#{employees.firstname}"></th>
+					<th th:text="#{employees.lastname}"></th>
+<!-- 					<th th:text="#{employees.born}"></th> -->
+<!-- 					<th th:text="#{employees.date_employed}"></th> -->
+					<th th:text="#{employees.username}"></th>
+					<th th:text="#{employees.email}"></th>
+					<th th:text="#{employees.department}"></th>
+<!-- 					<th th:text="#{employees.on_holiday}"></th> -->
+<!-- 					<th th:text="#{employees.role}"></th> -->
+					<th>More Info</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each = "employee : ${employees}">
+					<td th:text="${employee.Id}"> ></td>
+					<td th:text="${employee.firstName}"></td>
+					<td th:text="${employee.lastName}"></td>
+<!-- 					<td th:text="${employee.born}"></td> -->
+<!-- 					<td th:text="${employee.dateEmployed}"></td> -->
+					<td th:text="${employee.username}"></td>
+					<td th:text="${employee.email}"></td>
+					<td th:text="${employee.department}"></td>
+<!-- 					<td th:text="${employee.onHoliday}? #{bool.true} : #{bool.false}"></td> -->
+<!-- 					<td th:text="${employee.role} ? #{role.true} : #{role.false}"></td> -->
+	
+					<td><a th:href="@{employee/} + ${employee.Id}"><input type="button" class="btn btn-primary" value="See More"></a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="text-center">
+		<p>Total employees: [[${totalEmployees}]] - Page [[${currentPage}]] of [[${totalPages}]] -
+		<a th:if="${currentPage > 1}" th:href="@{/admin/employees/1}">First</a>
+		<span th:unless="${currentPage > 1}">First</span>
+		<a th:if="${currentPage > 1}" th:href="@{/admin/employees/} + ${currentPage - 1}"> Previous </a>
+		<span th:each="i: ${#numbers.sequence(1,totalPages)} ">
+		<a th:if="${i != currentPage}" th:href="@{/admin/employees/} + ${i}">[[${i}]]</a> 
+		<span th:unless="${i != currentPage}">[[${i}]]</span>&nbsp;
+		
+		
+		</span>
+		<a th:if="${currentPage < totalPages}" th:href="@{/admin/employees/} + ${currentPage + 1}">Next</a>
+		<span th:unless="${currentPage < totalPages}">Next</span>&nbsp;
+		<a th:if="${currentPage < totalPages}" th:href="@{/admin/employees/} + ${totalPages}">Last</a>
+		<span th:unless="${currentPage < totalPages}">Last</span>
+		</p>
+	</div>
+</main>
+
+<footer th:replace="fragments/admin/footer::footer"></footer>
+
+</body>
+
+</html>
+

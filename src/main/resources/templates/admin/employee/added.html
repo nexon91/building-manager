@@ -1,0 +1,7 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/admin/header::admin-header"></head>
+<nav th:replace="fragments/admin/header::admin-navbar"></nav>
+<div th:object="${employee}" >
+	<h3>Added new employee:</h3>
+	<p th:text=${employee.firstName}></p>
+</div>

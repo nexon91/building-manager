@@ -1,0 +1,44 @@
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="fragments/admin/header::admin-header">
+
+</head>
+<body>
+<nav th:replace="fragments/admin/navbar::admin-navbar"></nav>
+		<div class="container">
+			<table th:object="${employee}" class="table table-striped table-bordered">
+				<thead >
+					<tr >
+						<th th:text="#{employee.id}"></th>
+						<th th:text="#{employee.firstname}"></th>
+						<th th:text="#{employee.lastname}"></th>
+<!-- 						<th th:text="#{employee.born}"></th> -->
+<!-- 						<th th:text="#{employee.date_employed}"></th> -->
+						<th th:text="#{employee.username}"></th>
+						<th th:text="#{employee.email}"></th>
+						<th th:text="#{employee.department}"></th>
+						<th th:text="#{employee.on_holiday}"></th>
+						<th th:text="#{employee.role}"></th>
+						<th>Edit</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each = "employee : ${employee}">
+						<td th:text="${employee.Id}"> ></td>
+						<td th:text="${employee.firstName}"></td>
+						<td th:text="${employee.lastName}"></td>
+<!-- 						<td th:text="${employee.born}"></td> -->
+<!-- 						<td th:text="${employee.dateEmployed}"></td> -->
+						<td th:text="${employee.username}"></td>
+						<td th:text="${employee.email}"></td>
+						<td th:text="${employee.department}"></td>
+						<td th:text="${employee.onHoliday}? #{bool.true} : #{bool.false}"></td>
+						<td th:text="${employee.role} ? #{role.true} : #{role.false}"></td>
+		
+						<td><a th:href="@{/admin/employee/edit-employee/} + ${employee.Id}"><input type="button" class="btn btn-primary" value="Edit Employee"></a></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+<footer th:replace="fragments/admin/footer::footer"></footer>
+</body>
+</html>

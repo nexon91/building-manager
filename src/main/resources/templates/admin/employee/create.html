@@ -1,0 +1,8 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layouts :: header"></head>
+<nav th:replace="layouts :: navbar"></nav>
+<div th:object="${employee}" >
+	
+</div>
+<h1 th:text=${employee.firstName}></h1>
+</html>

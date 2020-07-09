@@ -1,0 +1,11 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/admin/header::admin-header"></head>
+
+<body>
+	<nav th:replace="fragments/admin/navbar::admin-navbar"></nav>
+	<div class="col-md-5 offset-md-3">
+		<h2 th:text="#{employee.error}" class="text-center"></h2>
+	</div>
+	<footer th:replace="fragments/admin/footer::footer"></footer>
+</body>
+</html>
